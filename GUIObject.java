@@ -3,7 +3,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
 /**
-* Class Description
+* GUIObject creates a basic menu GUI with three text objects.
 *
 * @author aross-sermons
 * @version 1.0
@@ -15,34 +15,47 @@ import java.awt.GridBagLayout;
 public class GUIObject extends GameShape{
 	private String header, opt1, opt2;
 	
+	/**
+	 * Default constructor 
+	 */
 	public GUIObject() {
 		super();
 		header = "Head";
 		opt1 = "Option 1";
 		opt2 = "Option 2";
 		newMenu();
-	}
+	}//end default constructor
 	
+	/**
+	 * This constructor has arguments for the String of each menu object.
+	 * @param header
+	 * @param opt1
+	 * @param opt2
+	 */
 	public GUIObject(String header, String opt1, String opt2) {
 		super(GameShape.ShapeType.BOX, 160, 100, 400, 200);
 		this.header = header;
 		this.opt1 = opt1;
 		this.opt2 = opt2;
 		newMenu();
-	}
+	}//end preferred constructor
 	
+	/**
+	 * Declares, instantiates, and adds all necessary menu items to this JPanel.
+	 */
 	public void newMenu() {
+		//Set basic JPanel values.
 		setLayout(new GridBagLayout());
 	    setOpaque(true);
 	    setBackground(Color.black);
 	    setBounds(trueX, trueY, size.width, size.height);
-	    
-	  //Declare and instantiate menu objects.
+	    //Declare and instantiate menu objects.
 	    GameShape mTitle = new GameShape(GameShape.ShapeType.TEXT, 0, 0, header);
 	    GameShape playButton = new GameShape(GameShape.ShapeType.TEXT, 0, 0, opt1);
 	    GameShape exitButton = new GameShape(GameShape.ShapeType.TEXT, 0, 0, opt2);
 	    //Using new GridBagConstraints to add menu objects.
 	    GridBagConstraints c = new GridBagConstraints();
+	    //Any assignment to c is changing the GridBagConstraints.
 	    c.weightx = 1;
 	    c.weighty = 0.35;
 	    c.gridx = 0;
@@ -75,6 +88,6 @@ public class GUIObject extends GameShape{
 	    add(new GameShape(), c);
 	    //End
 	    setVisible(false);
-	}
+	}//end newMenu
 
-}
+}//end GUIObject.java

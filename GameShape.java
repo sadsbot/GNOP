@@ -24,6 +24,7 @@ public class GameShape extends JPanel{
 		BOX, RECTANGLE, OVAL, TEXT, BLANK;
 	}//end enum ShapeType
 	
+	//Statues used to determine if the shape should be highlighted.
 	public enum Status{
 		DEFAULT, SELECTED;
 	}//end enum Status
@@ -34,6 +35,9 @@ public class GameShape extends JPanel{
 	protected Dimension size;
 	protected int trueX, trueY, width, height;
 	
+	/**
+	 * Default Constructor
+	 */
 	public GameShape() {
 		shape = ShapeType.BLANK;
 		shapeStatus = Status.DEFAULT;
@@ -47,6 +51,14 @@ public class GameShape extends JPanel{
 		setOpaque(false);//No background for the JFrame.
 	}//end default constructor
 	
+	/**
+	 * Preferred constructor for shapes.
+	 * @param shape
+	 * @param trueX
+	 * @param trueY
+	 * @param width
+	 * @param height
+	 */
 	public GameShape(ShapeType shape, int trueX, int trueY, int width, int height) {
 		this.shape = shape;
 		shapeStatus = Status.DEFAULT;
@@ -60,6 +72,13 @@ public class GameShape extends JPanel{
 		setOpaque(false);//No background for the JFrame.
 	}//end preferred constructor
 	
+	/**
+	 * Preferred constructor for text.
+	 * @param shape
+	 * @param trueX
+	 * @param trueY
+	 * @param textString
+	 */
 	public GameShape(ShapeType shape, int trueX, int trueY, String textString) {
 		this.shape = shape;
 		shapeStatus = Status.DEFAULT;
@@ -74,6 +93,10 @@ public class GameShape extends JPanel{
 		setOpaque(false);//No background for the JFrame.
 	}//end preferred constructor
 	
+	/**
+	 * Paints the required shape/text.
+	 */
+	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.setColor(Color.white);
@@ -113,82 +136,88 @@ public class GameShape extends JPanel{
 		}//end switch(shapeStatus)
 	}//end paint
 
+	/**
+	 * @return the top border
+	 */
 	public int getTopBorder() {
 		return(trueY);
-	}
+	}//end getTopBorder
 	
+	/**
+	 * @return the bottom border
+	 */
 	public int getBottomBorder() {
 		return(trueY + height);
-	}
+	}//end getBottomBorder
 	
+	/**
+	 * @return the left border
+	 */
 	public int getLeftBorder() {
 		return(trueX);
-	}
+	}//end getLeftBorder
 	
+	/**
+	 * @return the right border
+	 */
 	public int getRightBorder() {
 		return(trueX + width);
-	}
+	}//end getRightBorder
 	
 	/**
 	 * @return the trueX
 	 */
 	public int getTrueX() {
 		return trueX;
-	}
+	}//end getTrueX
 
 	/**
 	 * @param trueX the trueX to set
 	 */
 	public void setTrueX(int trueX) {
 		this.trueX = trueX;
-	}
+	}//end setTrueX
 
 	/**
 	 * @return the trueY
 	 */
 	public int getTrueY() {
 		return trueY;
-	}
+	}//end getTrueY
 
 	/**
 	 * @param trueY the trueY to set
 	 */
 	public void setTrueY(int trueY) {
 		this.trueY = trueY;
-	}
+	}//end setTrueY
 
-	public int getCenterY() {
-		return(trueY + (height/2));
-	}
-	
 	/**
 	 * @return the textString
 	 */
 	public String getTextString() {
 		return textString;
-	}
+	}//end getTextString
 
 	/**
 	 * @param textString the textString to set
 	 */
 	public void setTextString(String textString) {
 		this.textString = textString;
-	}
+	}//end setTextString
 
 	/**
 	 * @return the shapeStatus
 	 */
 	public Status getShapeStatus() {
 		return shapeStatus;
-	}
+	}//end getShapeStatus
 
 	/**
 	 * @param shapeStatus the shapeStatus to set
 	 */
 	public void setShapeStatus(Status shapeStatus) {
 		this.shapeStatus = shapeStatus;
-	}
-	
-	
+	}//end setShapeStatus
 	
 }//end GameShape.java

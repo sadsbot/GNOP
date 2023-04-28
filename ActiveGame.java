@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 /**
-* Class Description
+* Object representing an active Gnop game.
 *
 * @author aross-sermons
 * @version 1.0
@@ -20,6 +20,12 @@ public class ActiveGame extends JPanel{
 	private int width, playerOneScore, playerTwoScore;
 	
 	
+	/**
+	 * Preferred constructor with parameters to set panel width and height.
+	 * 
+	 * @param width
+	 * @param height
+	 */
 	public ActiveGame(int width, int height) {
 		activeDisplay = new GameShape(GameShape.ShapeType.TEXT, 100, 25, "0    0");
 		this.width = width;
@@ -34,31 +40,42 @@ public class ActiveGame extends JPanel{
 	    setOpaque(false);
 	    setLayout(null);
 	    add(activeDisplay);
-	}
+	}//end preferred constructor
 	
+	/**
+	 * paint method inherited from Component.
+	 * Draws the dotted line in center screen.
+	 */
+	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.setColor(Color.gray.brighter());
 		for(int i = 0; i < 20; i++) {
 			g.drawLine((width/2), (i*25), (width/2), (i*25+12));
-		}
-	}
+		}//end for
+	}//end paintComponent
 	
+	/**
+	 * Updates the score string and display.
+	 */
 	public void updateCurrentScore() {
 		currentScore = (playerOneScore + "    " + playerTwoScore);
 		activeDisplay.setTextString(currentScore);
-	}
+	}//end updateCurrentScore
 	
+	/**
+	 * @return the currentScore
+	 */
 	public String getCurrentScore() {
 		return currentScore;
-	}
+	}//end getCurrentScore
 
 	/**
 	 * @return the playerOneScore
 	 */
 	public int getPlayerOneScore() {
 		return playerOneScore;
-	}
+	}//end getPlayerOneScore
 
 	/**
 	 * @param playerOneScore the playerOneScore to set
@@ -66,18 +83,18 @@ public class ActiveGame extends JPanel{
 	public void setPlayerOneScore(int playerOneScore) {
 		this.playerOneScore = playerOneScore;
 		updateCurrentScore();
-	}
+	}//end setPlayerOneScore
 	
 	public void playerOneScored() {
 		playerOneScore++;
-	}
+	}//end playerOneScored
 
 	/**
 	 * @return the playerTwoScore
 	 */
 	public int getPlayerTwoScore() {
 		return playerTwoScore;
-	}
+	}//end getPlayerTwoScore
 
 	/**
 	 * @param playerTwoScore the playerTwoScore to set
@@ -85,10 +102,10 @@ public class ActiveGame extends JPanel{
 	public void setPlayerTwoScore(int playerTwoScore) {
 		this.playerTwoScore = playerTwoScore;
 		updateCurrentScore();
-	}
+	}//end setPlayerTwoScore
 	
 	public void playerTwoScored() {
 		playerTwoScore++;
-	}
+	}//end playerTwoScored
 	
-}
+}//end ActiveGame.java
